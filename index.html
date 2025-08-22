@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musab Bin Umair Memorial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #1a5e63;
+            --secondary: #4bb543;
+            --accent: #e9b44b;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-left: 10px;
+        }
+        
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            cursor: pointer;
+        }
+        
+        .menu-toggle span {
+            width: 100%;
+            height: 3px;
+            background-color: white;
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 94, 99, 0.8), rgba(26, 94, 99, 0.8)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        /* Sections Overview */
+        .sections {
+            padding: 4rem 0;
+        }
+        
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .section-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+        
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-img {
+            height: 180px;
+            background-color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .card-content h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Login Section */
+        .login-section {
+            background-color: var(--primary);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .login-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .login-btn {
+            background-color: var(--accent);
+            color: var(--dark);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            transition: var(--transition);
+        }
+        
+        .login-btn:hover {
+            background-color: white;
+        }
+        
+        .user-type {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .user-type label {
+            margin: 0 1rem;
+            cursor: pointer;
+        }
+        
+        /* Payment Section */
+        .payment-section {
+            padding: 4rem 0;
+            background-color: #f1f8ff;
+        }
+        
+        .payment-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .payment-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+        
+        .payment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        
+        .payment-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .footer-section p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-section a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+            
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary);
+                padding: 1rem 0;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 1rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .header-content {
+                flex-wrap: wrap;
+            }
+        }
+        
+        /* Page Content Styles */
+        .page-content {
+            display: none;
+            padding: 2rem 0;
+            min-height: 60vh;
+        }
+        
+        .page-content.active {
+            display: block;
+        }
+        
+        .page-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            list-style: none;
+            padding: 1rem 0;
+        }
+        
+        .breadcrumb li {
+            margin-right: 0.5rem;
+        }
+        
+        .breadcrumb li:after {
+            content: '/';
+            margin-left: 0.5rem;
+            color: #ddd;
+        }
+        
+        .breadcrumb li:last-child:after {
+            content: '';
+        }
+        
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-img">MBUM</div>
+                <h1>Musab Bin Umair Memorial</h1>
+            </div>
+            
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#" class="nav-link" data-page="home">Home</a></li>
+                    <li><a href="#" class="nav-link" data-page="islamiyya">Islamiyya</a></li>
+                    <li><a href="#" class="nav-link" data-page="tahfiz">Tahfiz</a></li>
+                    <li><a href="#" class="nav-link" data-page="higher-islamic">Higher Islamic</a></li>
+                    <li><a href="#" class="nav-link" data-page="primary">Primary</a></li>
+                    <li><a href="#" class="nav-link" data-page="nursery">Nursery</a></li>
+                    <li><a href="#" class="nav-link" data-page="mosque-majlis">Mosque Majlis</a></li>
+                    <li><a href="#" class="nav-link" data-page="payment">Payments</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Page Content -->
+    <div id="home" class="page-content active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h2>Welcome to Musab Bin Umair Memorial</h2>
+                <p>Providing quality Islamic education and nurturing future generations with knowledge, faith, and character.</p>
+                <a href="#login" class="btn">Student Portal</a>
+                <a href="#payment" class="btn" style="background-color: white; color: var(--primary); margin-left: 1rem;">Make Payment</a>
+            </div>
+        </section>
+
+        <!-- Sections Overview -->
+        <section class="sections">
+            <div class="container">
+                <h2 class="section-title">Our Educational Sections</h2>
+                <div class="section-grid">
+                    <div class="section-card">
+                        <div class="card-img">
+                            <i class="fas fa-book-quran"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Islamiyya 1-6</h3>
+                            <p>Basic Islamic studies for children covering Quran, Hadith, Fiqh, and Islamic history.</p>
+                            <a href="#" class="btn nav-link" data-page="islamiyya">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="section-card">
+                        <div class="card-img">
+                            <i class="fas fa-mosque"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Tahfiz</h3>
+                            <p>Memorization of the Holy Quran with proper Tajweed and understanding.</p>
+                            <a href="#" class="btn nav-link" data-page="tahfiz">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="section-card">
+                        <div class="card-img">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Higher Islamic</h3>
+                            <p>Advanced Islamic studies for in-depth knowledge of Islamic sciences.</p>
+                            <a href="#" class="btn nav-link" data-page="higher-islamic">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="section-card">
+                        <div class="card-img">
+                            <i class="fas fa-pencil-alt"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Primary School</h3>
+                            <p>Combining national curriculum with Islamic education for holistic development.</p>
+                            <a href="#" class="btn nav-link" data-page="primary">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="section-card">
+                        <div class="card-img">
+                            <i class="fas fa-baby"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Nursery School</h3>
+                            <p>Early childhood education in a nurturing Islamic environment.</p>
+                            <a href="#" class="btn nav-link" data-page="nursery">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="section-card">
+                        <div class="card-img">
+                            <i class="fas fa-place-of-worship"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Mosque Majlis</h3>
+                            <p>Community programs, lectures, and religious gatherings for all ages.</p>
+                            <a href="#" class="btn nav-link" data-page="mosque-majlis">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Login Section -->
+        <section class="login-section" id="login">
+            <div class="container">
+                <h2 class="section-title">Student & Staff Portal</h2>
+                <div class="login-container">
+                    <div class="user-type">
+                        <label><input type="radio" name="userType" value="student" checked> Student</label>
+                        <label><input type="radio" name="userType" value="staff"> Staff</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" placeholder="Enter your username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Enter your password">
+                    </div>
+                    <button class="login-btn" onclick="login()">Login</button>
+                    <p style="margin-top: 1rem;">Don't have an account? <a href="#" style="color: var(--accent);" onclick="showRegistrationModal()">Register here</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Payment Section -->
+        <section class="payment-section" id="payment">
+            <div class="container">
+                <h2 class="section-title">Payment Portal</h2>
+                <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">Convenient payment options for school fees, registration, and other expenses. Secure and easy transactions.</p>
+                
+                <div class="payment-options">
+                    <div class="payment-card">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <h3>School Fees</h3>
+                        <p>Pay tuition fees for any section</p>
+                        <a href="#" class="btn" onclick="showPaymentModal('school-fees')">Pay Now</a>
+                    </div>
+                    <div class="payment-card">
+                        <i class="fas fa-user-plus"></i>
+                        <h3>Registration</h3>
+                        <p>New student registration fees</p>
+                        <a href="#" class="btn" onclick="showPaymentModal('registration')">Pay Now</a>
+                    </div>
+                    <div class="payment-card">
+                        <i class="fas fa-book"></i>
+                        <h3>Books & Materials</h3>
+                        <p>Pay for textbooks and learning materials</p>
+                        <a href="#" class="btn" onclick="showPaymentModal('materials')">Pay Now</a>
+                    </div>
+                    <div class="payment-card">
+                        <i class="fas fa-tshirt"></i>
+                        <h3>Uniform</h3>
+                        <p>Purchase school uniforms</p>
+                        <a href="#" class="btn" onclick="showPaymentModal('uniform')">Pay Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Islamiyya Page Content -->
+    <div id="islamiyya" class="page-content">
+        <div class="page-header">
+            <div class="container">
+                <ul class="breadcrumb">
+                    <li><a href="#" class="nav-link" data-page="home">Home</a></li>
+                    <li>Islamiyya</li>
+                </ul>
+                <h2 class="section-title">Islamiyya 1-6</h2>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="section-grid">
+                <div class="section-card">
+                    <div class="card-img">
+                        <i class="fas fa-quran"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Quran Studies</h3>
+                        <p>Learn to read the Quran with proper Tajweed. Basic memorization of short Surahs.</p>
+                    </div>
+                </div>
+                <div class="section-card">
+                    <div class="card-img">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Islamic Studies</h3>
+                        <p>Comprehensive curriculum covering pillars of Islam, faith, and Islamic manners.</p>
+                    </div>
+                </div>
+                <div class="section-card">
+                    <div class="card-img">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Islamic History</h3>
+                        <p>Stories of the prophets and important events in Islamic history.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 3rem;">
+                <h3>About Our Islamiyya Program</h3>
+                <p>Our Islamiyya program is designed for children aged 6-12 years, divided into six levels. We focus on building a strong foundation in Islamic knowledge and practice through engaging lessons and activities.</p>
+                
+                <h3 style="margin-top: 1.5rem;">Program Features</h3>
+                <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                    <li>Qualified and experienced teachers</li>
+                    <li>Small class sizes for individual attention</li>
+                    <li>Regular assessments and progress reports</li>
+                    <li>Islamic environment and role models</li>
+                    <li>Extracurricular activities and competitions</li>
+                </ul>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="#" class="btn" onclick="showRegistrationModal()">Register Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tahfiz Page Content -->
+    <div id="tahfiz" class="page-content">
+        <div class="page-header">
+            <div class="container">
+                <ul class="breadcrumb">
+                    <li><a href="#" class="nav-link" data-page="home">Home</a></li>
+                    <li>Tahfiz</li>
+                </ul>
+                <h2 class="section-title">Tahfiz Program</h2>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="section-grid">
+                <div class="section-card">
+                    <div class="card-img">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Quran Memorization</h3>
+                        <p>Complete Hifz program with experienced Huffaz teachers.</p>
+                    </div>
+                </div>
+                <div class="section-card">
+                    <div class="card-img">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Tajweed Mastery</h3>
+                        <p>Perfect your recitation with rules of Tajweed.</p>
+                    </div>
+                </div>
+                <div class="section-card">
+                    <div class="card-img">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Ijazah Program</h3>
+                        <p>Get certified with sanad (chain of narration).</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 3rem;">
+                <h3>About Our Tahfiz Program</h3>
+                <p>Our Tahfiz program is designed for students who wish to memorize the entire Quran. We provide a structured environment with qualified teachers who have Ijazah in Quran recitation.</p>
+                
+                <h3 style="margin-top: 1.5rem;">Program Structure</h3>
+                <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                    <li>Daily memorization targets with revision</li>
+                    <li>Regular testing and evaluation</li>
+                    <li>One-on-one attention from teachers</li>
+                    <li>Focus on understanding and application</li>
+                    <li>Preparation for Ijazah certification</li>
+                </ul>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="#" class="btn" onclick="showRegistrationModal()">Apply Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Other section pages would follow similar structure -->
+    <!-- Higher Islamic, Primary, Nursery, Mosque Majlis pages -->
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Education Street, Knowledge City</p>
+                    <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+                    <p><i class="fas fa-envelope"></i> info@mbum.edu</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="#" class="nav-link" data-page="home">Home</a></p>
+                    <p><a href="#" class="nav-link" data-page="islamiyya">Islamiyya</a></p>
+                    <p><a href="#" class="nav-link" data-page="tahfiz">Tahfiz</a></p>
+                    <p><a href="#" class="nav-link" data-page="payment">Payment Portal</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <p style="margin-top: 1rem;">Subscribe to our newsletter</p>
+                    <div class="form-group" style="margin-top: 0.5rem;">
+                        <input type="email" placeholder="Your email address">
+                    </div>
+                    <button class="btn" style="width: 100%;">Subscribe</button>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Musab Bin Umair Memorial. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Registration Modal -->
+    <div class="modal" id="registrationModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('registrationModal')">&times;</span>
+            <h2 style="color: var(--primary); margin-bottom: 1.5rem;">Student Registration</h2>
+            
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" placeholder="Student's full name">
+            </div>
+            
+            <div class="form-group">
+                <label for="parentName">Parent/Guardian Name</label>
+                <input type="text" id="parentName" placeholder="Parent/guardian name">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="Your email address">
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" placeholder="Your phone number">
+            </div>
+            
+            <div class="form-group">
+                <label for="section">Select Section</label>
+                <select id="section" style="width: 100%; padding: 0.8rem; border-radius: 4px; border: none; background-color: rgba(255, 255, 255, 0.9);">
+                    <option value="">-- Select Section --</option>
+                    <option value="islamiyya">Islamiyya 1-6</option>
+                    <option value="tahfiz">Tahfiz</option>
+                    <option value="higher-islamic">Higher Islamic</option>
+                    <option value="primary">Primary School</option>
+                    <option value="nursery">Nursery School</option>
+                </select>
+            </div>
+            
+            <button class="login-btn" onclick="submitRegistration()">Submit Registration</button>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div class="modal" id="paymentModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('paymentModal')">&times;</span>
+            <h2 style="color: var(--primary); margin-bottom: 1.5rem;">Make Payment</h2>
+            
+            <div class="form-group">
+                <label for="paymentFor">Payment For</label>
+                <input type="text" id="paymentFor" readonly>
+            </div>
+            
+            <div class="form-group">
+                <label for="amount">Amount ($)</label>
+                <input type="number" id="amount" placeholder="Enter amount">
+            </div>
+            
+            <div class="form-group">
+                <label for="cardNumber">Card Number</label>
+                <input type="text" id="cardNumber" placeholder="Enter card number">
+            </div>
+            
+            <div style="display: flex; gap: 1rem;">
+                <div class="form-group" style="flex: 1;">
+                    <label for="expiry">Expiry Date</label>
+                    <input type="text" id="expiry" placeholder="MM/YY">
+                </div>
+                <div class="form-group" style="flex: 1;">
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" placeholder="CVV">
+                </div>
+            </div>
+            
+            <button class="login-btn" onclick="processPayment()">Process Payment</button>
+        </div>
+    </div>
+
+    <script>
+        // Navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pages = document.querySelectorAll('.page-content');
+            const menuToggle = document.getElementById('menuToggle');
+            const navMenu = document.getElementById('navMenu');
+            
+            // Handle navigation clicks
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetPage = this.getAttribute('data-page');
+                    
+                    // Hide all pages
+                    pages.forEach(page => {
+                        page.classList.remove('active');
+                    });
+                    
+                    // Show target page
+                    document.getElementById(targetPage).classList.add('active');
+                    
+                    // Close mobile menu if open
+                    navMenu.classList.remove('show');
+                    
+                    // Scroll to top
+                    window.scrollTo(0, 0);
+                });
+            });
+            
+            // Mobile menu toggle
+            menuToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('show');
+            });
+        });
+        
+        // Login functionality
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const isStudent = document.querySelector('input[name="userType"]:checked').value === 'student';
+            
+            if (!username || !password) {
+                alert('Please enter both username and password');
+                return;
+            }
+            
+            // Simulate login process
+            alert(`Logging in as ${isStudent ? 'student' : 'staff'} with username: ${username}`);
+            
+            // Redirect based on user type (simulated)
+            if (isStudent) {
+                // In a real scenario, this would redirect to the student dashboard
+                console.log('Redirecting to student dashboard');
+            } else {
+                // In a real scenario, this would redirect to the staff dashboard
+                console.log('Redirecting to staff dashboard');
+            }
+        }
+        
+        // Modal functionality
+        function showRegistrationModal() {
+            document.getElementById('registrationModal').style.display = 'flex';
+        }
+        
+        function showPaymentModal(type) {
+            const paymentModal = document.getElementById('paymentModal');
+            const paymentFor = document.getElementById('paymentFor');
+            
+            // Set payment type
+            switch(type) {
+                case 'school-fees':
+                    paymentFor.value = 'School Fees';
+                    break;
+                case 'registration':
+                    paymentFor.value = 'Registration Fees';
+                    break;
+                case 'materials':
+                    paymentFor.value = 'Books & Materials';
+                    break;
+                case 'uniform':
+                    paymentFor.value = 'School Uniform';
+                    break;
+            }
+            
+            paymentModal.style.display = 'flex';
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+        
+        function submitRegistration() {
+            alert('Registration submitted successfully! We will contact you soon.');
+            closeModal('registrationModal');
+        }
+        
+        function processPayment() {
+            alert('Payment processed successfully! Thank you.');
+            closeModal('paymentModal');
+        }
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            const registrationModal = document.getElementById('registrationModal');
+            const paymentModal = document.getElementById('paymentModal');
+            
+            if (e.target === registrationModal) {
+                closeModal('registrationModal');
+            }
+            
+            if (e.target === paymentModal) {
+                closeModal('paymentModal');
+            }
+        });
+    </script>
+</body>
+</html>
